@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_airport: one
+  to_airport: one
+  pilot_in_command: one
+  co_pilot: one
+
+two:
+  from_airport: two
+  to_airport: two
+  pilot_in_command: two
+  co_pilot: two

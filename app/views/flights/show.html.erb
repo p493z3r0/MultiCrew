@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From airport:</strong>
+  <%=@flight.from_airport%>
+</p>
+
+<p>
+  <strong>To airport:</strong>
+  <%= @flight.to_airport %>
+</p>
+
+<p>
+  <strong>Pilot in command:</strong>
+  <% if @flight.pic_pilot_id != nil%>
+      <td><%= Pilot.find(@flight.pic_pilot_id).name%> <%=Pilot.find(@flight.pic_pilot_id).lastname%></td>
+   <% else%>
+        <td>PIC is not yet set!<td>
+  <% end %>
+
+<p>
+  <strong>Co pilot:</strong>
+   <% if @flight.cop_pilot_id != nil%>
+         <%p @flight.cop_pilot_id %>
+        <td><%= Pilot.find(@flight.cop_pilot_id).name%> <%=Pilot.find(@flight.cop_pilot_id).lastname%></td></p>
+    <% else%>
+        <td>F/O is not yet set!<td>
+        <%= link_to "Set", flight_set_copilot_path(@flight), class: "button" %>
+    <% end %>
+
+</p>
+<p>
+  <strong>Flightplan:</strong>
+  <td><%= @flight.flightplan%></td></p>
+</p>
+<p>
+  <strong>Description:</strong>
+  <td><%= @flight.description%></td></p>
+</p>
+
+
+<%= link_to 'Edit', edit_flight_path(@flight) %> |
+<%= link_to 'Back', flights_path %>
