@@ -2,7 +2,10 @@
 
 <h1>Flights</h1>
 
-<table>
+<h2>Filter</h2>
+<input id="filtertxt" type=text placeholder="Type Anything" onkeyup="search()">
+
+<table id="flights">
   <thead>
     <tr>
       <th>From</th>
@@ -37,7 +40,7 @@
         <td><%= flight.description%></td>
         <td><%= flight.aircraft%></td>
         <td><%= flight.date.strftime("%B %d at %I:%M %p")%></td>
-        <td><%= link_to 'Show', flight %></td>
+        <td><%= link_to 'Details', flight %></td>
         <!-- 
         <td><%= link_to 'Edit', edit_flight_path(flight) %></td>
         <td><%= link_to 'Destroy', flight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -50,3 +53,33 @@
 <br>
 
 <%= link_to 'New Flight', new_flight_path %>
+
+<script>
+function tdContainsText(tds){
+  let input = document.getElementById("filtertxt");
+  let filter = input.value.toUpperCase();
+  for(var td of tds){
+    let txtValue = td.textContent || td.innerText;
+    if((txtValue.toUpperCase().indexOf(filter) > -1)) {
+      return true;
+    }
+  }
+  return false;
+}
+function search() {
+  // TODO: Make TH not disappear.
+  var table, tr, td, i;
+  
+  table = document.getElementById("flights");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    tds = tr[i].getElementsByTagName("td");
+    if (tdContainsText(tds)) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+  }
+}
+</script>
+
