@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_130259) do
+ActiveRecord::Schema.define(version: 2019_10_09_174244) do
 
   create_table "airports", force: :cascade do |t|
     t.string "IATA"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_10_09_130259) do
     t.datetime "date"
     t.text "flightplan"
     t.text "description"
+    t.string "aircraft"
     t.index ["cop_pilot_id"], name: "index_flights_on_cop_pilot_id"
     t.index ["pic_pilot_id"], name: "index_flights_on_pic_pilot_id"
   end

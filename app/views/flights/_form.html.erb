@@ -20,6 +20,10 @@
     <%= form.text_field :to_airport %>
   </div>
   <div class="field">
+    <%= form.label :aircraft %>
+    <%= form.text_field :aircraft %>
+  </div>
+  <div class="field">
    <%= form.label :date %>
    <%= form.datetime_select :date, :ampm => true, :minute_step => 1 %>
   </div>

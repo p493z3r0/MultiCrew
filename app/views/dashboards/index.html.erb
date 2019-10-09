@@ -11,8 +11,8 @@
       <th>Co pilot</th>
       <th>Flightplan</th>
       <th>Description</th>
+      <th>Aircraft</th>
       <th>Date</th>
-
 
       <th colspan="3"></th>
     </tr>
@@ -24,6 +24,7 @@
         <td><%= flight.from_airport%></td>
         <td><%= flight.to_airport%></td>
         <%if flight.pic_pilot_id != nil%>
+
           <td><%= Pilot.find(flight.pic_pilot_id).name%> <%=Pilot.find(flight.pic_pilot_id).lastname%></td>
         <%else%>
           <td>PIC is not yet set!</td>
@@ -35,6 +36,7 @@
         <%end%>
         <td><%= flight.flightplan%></td>
         <td><%= flight.description%></td>
+        <td><%= flight.aircraft%></td>
         <td><%= flight.date.strftime("%B %d at %I:%M %p")%></td>
         <td><%= link_to 'Show', flight %></td>
         <!-- 
