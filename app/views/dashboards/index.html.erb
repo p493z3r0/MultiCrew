@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Dashboard</h1>
+<h2>Your friends</h2>
+<ul>
+  <% for pilot in @pilot.friends %>
+  <li><%=  pilot.name  %> <%=  pilot.lastname  %></li>
+  <% end %>  
+</ul>
 <h2>Upcomming flights</h2>
 <% if @flights.length == 0%>
     <p>No Flights Scheduled!</p>

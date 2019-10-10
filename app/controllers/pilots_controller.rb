@@ -10,17 +10,11 @@ class PilotsController < ApplicationController
   end
 
   def add_friend
-    pilot = Pilot.find(params[:pilot_id])
-    if !pilot.blank?
-      user = Pilot.find(current_user.id)
-      friendships = Friendship.new
-
-      user.friends.push(pilot)
-      redirect_to :action => "index"
-
-    else
-    end
-
+    
+  end
+    
+  def remove_friend
+      
   end
 
   # GET /pilots/1

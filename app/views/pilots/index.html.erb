@@ -26,7 +26,7 @@
         <!-- <td><%= link_to 'Show', pilot %></td> -->
         <td><%= link_to 'Edit', edit_pilot_path(pilot)%></td> 
         <%else%>
-        <td><%= link_to 'Add Friend', friend_request_path(pilot, :method => :post)%></td> 
+        <td><%= link_to "Add Friend", friendships_path(:friend_id => pilot), :method => :post %></td> 
 
         <!--<td><%= link_to 'Destroy', pilot, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
         <%end%>
