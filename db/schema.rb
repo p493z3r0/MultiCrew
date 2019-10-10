@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_174244) do
+ActiveRecord::Schema.define(version: 2019_10_10_104836) do
 
   create_table "airports", force: :cascade do |t|
     t.string "IATA"
@@ -39,6 +39,24 @@ ActiveRecord::Schema.define(version: 2019_10_09_174244) do
     t.index ["pic_pilot_id"], name: "index_flights_on_pic_pilot_id"
   end
 
+  create_table "friend_requests", force: :cascade do |t|
+    t.integer "pilot_id", null: false
+    t.integer "friend_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_friend_requests_on_friend_id"
+    t.index ["pilot_id"], name: "index_friend_requests_on_pilot_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "pilot_id", null: false
+    t.integer "friend_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["pilot_id"], name: "index_friendships_on_pilot_id"
+  end
+
   create_table "pilots", force: :cascade do |t|
     t.string "name"
     t.string "lastname"
@@ -48,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_10_09_174244) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "experience"
     t.index ["user_id"], name: "index_pilots_on_user_id"
   end
 
@@ -63,5 +82,9 @@ ActiveRecord::Schema.define(version: 2019_10_09_174244) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "friend_requests", "friends"
+  add_foreign_key "friend_requests", "pilots"
+  add_foreign_key "friendships", "pilots"
+  add_foreign_key "friendships", "pilots", column: "friend_id"
   add_foreign_key "pilots", "users"
 end

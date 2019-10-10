@@ -2,6 +2,9 @@
 
 <h1>Dashboard</h1>
 <h2>Upcomming flights</h2>
+<% if @flights.length == 0%>
+    <p>No Flights Scheduled!</p>
+<%else%>
 <table>
   <thead>
     <tr>
@@ -47,6 +50,7 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 
 <br>
 

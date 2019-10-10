@@ -30,13 +30,17 @@
     <%= form.label :about %>
     <%= form.text_area :about %>
   </div>
+  <div class="field">
+      <% puts @Values%>
 
+    <%= form.label :experience %>
+    <%= form.select :experience, @Values, {}, {@Values => params[:pid]} %>
   <div class="field">
     <%= form.label :simulator %>
     <%= form.text_field :simulator %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions ">
+    <%= form.submit :class => "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,6 +1,10 @@
-<h1>Editing Pilot</h1>
-
+<h1>Edit your Pilot profile</h1>
+<% if current_user.id != @pilot.user_id%>
+    <h3>This is not your Profile. Access Denied</h3>
+<%else%>
 <%= render 'form', pilot: @pilot %>
 
 <%= link_to 'Show', @pilot %> |
-<%= link_to 'Back', pilots_path %>
+<%= link_to 'Back', pilots_path %> |
+<%= link_to 'Change passwort',  edit_user_registration_path, :class => 'actions' %> |
+<%end%>
