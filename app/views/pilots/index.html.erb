@@ -26,8 +26,11 @@
         <!-- <td><%= link_to 'Show', pilot %></td> -->
         <td><%= link_to 'Edit', edit_pilot_path(pilot)%></td> 
         <%else%>
-        <td><%= link_to "Add Friend", friendships_path(:friend_id => pilot), :method => :post %></td> 
-
+          <%if pilot.friendships.where(:pilot_id => Pilot.find(current_user.id).id, :friend_id  => pilot.id).exists? %>
+            <p>You are already Friends</p>
+          <%else%>
+            <td><%= link_to "Add Friend", friendships_path(:friend_id => pilot), :method => :post %></td> 
+        <%end%>
         <!--<td><%= link_to 'Destroy', pilot, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
         <%end%>
       </tr>
