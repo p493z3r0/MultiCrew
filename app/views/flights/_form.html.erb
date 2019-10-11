@@ -30,7 +30,7 @@
 
   <div class="field">
     <%= form.label :pilot_in_command_id %>
-    <%= form.select(:pic_pilot_id, Pilot.all.collect { |s| [s.name, s.id] }, {:include_blank => true, :selected => form.object.pic_pilot_id}) %>
+    <%= form.select(:pic_pilot_id, Pilot.all.collect { |s| [s.name, s.lastname, s.id] }, {:include_blank => true, :selected => form.object.pic_pilot_id}) %>
 
   </div>
 
