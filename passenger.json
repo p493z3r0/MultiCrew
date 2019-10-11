@@ -2,5 +2,5 @@
     "environment": "production",
     "port": 80,
     "daemonize": true,
-    "user": "myappuser"
+    "user": "rails"
   }
