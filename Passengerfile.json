@@ -2,5 +2,8 @@
     "environment": "production",
     "port": 80,
     "daemonize": true,
-    "user": "rails"
+    "user": "rails",
+    "ssl_certificate": "/var/www/fullchain.pem",
+    "ssl_certificate_key": "/var/www/privkey.pem",
+    "nginx_config_template": "/path/to/nginx.conf.erb"
   }
